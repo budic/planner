@@ -16,6 +16,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'pundit'
 gem 'simple_form'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :mri_21, :rbx]
@@ -23,6 +24,16 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+
+group :development, :test do 
+  gem 'minitest'
+  gem 'turn', '<0.8.3'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+
+end
+
 group :production do
   gem 'unicorn'
 end
