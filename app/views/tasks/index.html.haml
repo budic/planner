@@ -1,2 +1,11 @@
-%h1 Tasks#index
-%p Find me in app/views/tasks/index.html.haml
+%h1 Tasks
+
+= render 'form'
+  
+%ul
+  - for task in @tasks
+    %li{id: "task_#{task.id}"}
+      = task.task
+      | #{link_to 'Edit', edit_task_path(task)}
+      | #{link_to 'Delete', task, :method => 'delete'}
+  
