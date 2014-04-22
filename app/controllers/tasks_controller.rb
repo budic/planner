@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   def index
     @task =Task.new
-    @tasks = Task.all
+    @tasks = Task.where( 'user_id' => current_user.id )
   end
   
   def create
-    Task.create task_params
+    @task = Task.new
+    @task = current_user.tasks.create task_params
     redirect_to :back
   end
 
@@ -24,7 +25,7 @@ class TasksController < ApplicationController
   
   def destroy
     Task.destroy params[:id]
-    redirect_to :back, :notice => 'Task has been deleted'
+    redirect_to tasks_path, :notice => 'Task has been deleted'
   end
   
   

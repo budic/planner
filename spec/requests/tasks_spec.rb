@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe "Tasks" do
+  
+  before (:each) do
+    login
+  end
+  
   before do
-     @task = Task.create :task => 'go to bed'
+    @task = Task.create :task => 'go to bed', :user_id => @user.id
+
   end
   
   describe "GET /tasks" do
@@ -21,12 +27,14 @@ describe "Tasks" do
         page.should have_content 'go to work'
       #save_and_open_page  -- can't use lanchy in Nitrous.io
     end
+    
+    #Warden.test_reset! 
   end
   
   describe "PUT /tasks" do
     it "edits a task" do
       visit tasks_path
-      click_link 'Edit'
+      find("#task_#{@task.id}").click_link 'go to bed'
       
       current_path.should == edit_task_path(@task)
       
@@ -42,7 +50,7 @@ describe "Tasks" do
     
     it "should not update an empty task" do
       visit tasks_path
-      click_link 'Edit'
+      click_link 'go to bed'
       
       fill_in 'Task', :with => ''
       click_button 'Update Task'
@@ -50,19 +58,26 @@ describe "Tasks" do
       current_path.should == edit_task_path(@task)
       page.should have_content 'There was an error updating your task.'
     end
-    
+    Warden.test_reset! 
   end
   
   describe "DELETE /tasks" do
     it "should delete a task" do
       visit tasks_path
-      find("#task_#{@task.id}").click_link 'Delete'
+      find("#task_#{@task.id}").click_link 'go to bed'
+      
+      click_link 'Delete'
+      
+      #page.should have_content 'Are you sure'
+      
+      #click_link 'Ok'
+      
       page.should have_content 'Task has been deleted'
-      page.should have_no_content 'go to bed'
+      page.should have_no_content 'go to bed' 
       
     end
+    Warden.test_reset! 
   end
   
   
 end
-

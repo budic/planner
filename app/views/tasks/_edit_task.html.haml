@@ -1,0 +1,10 @@
+= form_for @task do |f|
+  = f.label :task
+  = f.text_field :task
+
+  %button.btn.btn-success.btn-xs{type: "submit"}
+    %i.glyphicon.glyphicon-save
+    Update Task
+  = link_to "<i class='glyphicon glyphicon-remove'> </i> Delete".html_safe, f.object, class: 'btn btn-danger btn-xs', data: {method: 'DELETE', :confirm => 'Are you sure?'}
+
+

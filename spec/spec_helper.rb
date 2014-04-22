@@ -13,6 +13,21 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+include Warden::Test::Helpers
+include Devise::TestHelpers
+Warden.test_mode!
+
+module FeatureHelpers
+  def login
+    user = FactoryGirl.create(:user)
+    user.confirmed_at = Time.now
+    user.save
+    login_as(user, :scope => :user )
+    @user = user
+  end
+  
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -21,7 +36,10 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  config.include FeatureHelpers, type: :request
   config.include Capybara::DSL
+  config.include Devise::TestHelpers, :type => :controller
+  config.include FactoryGirl::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -41,3 +59,4 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
