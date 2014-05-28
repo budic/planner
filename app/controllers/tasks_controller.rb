@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     @task.save
     @todo = Todo.new
     @todo.task_id = @task.id
-    @todo.schedule_id = params[:schedule_id]
+    @todo.schedule_block_id = params[:schedule_block_id]
     @todo.save
     redirect_to :back
   end
@@ -43,6 +43,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:task_id])
     @task.state = :complete
     @task.save
+    @task.todo.update_attribute :position_position, :last
     respond_to do |format|    
       format.js  
     end    

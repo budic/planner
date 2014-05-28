@@ -1,4 +1,6 @@
 Planner::Application.routes.draw do
+  resources :schedule_blocks
+
   resources :time_blocks
 
   resources :todos do

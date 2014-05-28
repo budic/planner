@@ -1,13 +1,19 @@
 %h1 Listing time_blocks
 
-%table
+%table.table.table-condensed
   %tr
+    %th Id
+    %th User Id
+    %th Name
     %th
     %th
     %th
 
   - @time_blocks.each do |time_block|
     %tr
+      %td= time_block.id
+      %td= time_block.user_id
+      %td= time_block.name
       %td= link_to 'Show', time_block
       %td= link_to 'Edit', edit_time_block_path(time_block)
       %td= link_to 'Destroy', time_block, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,8 +1,9 @@
 %h1 Listing todos
 
-%table
+%table.table.table-condensed
   %tr
     %th Schedule
+    %th Schedule Block
     %th Task
     %th Position
     %th Description
@@ -12,7 +13,8 @@
 
   - @todos.each do |todo|
     %tr
-      %td= todo.schedule_id
+      %td= todo.schedule_block.schedule.today
+      %td= todo.schedule_block_id
       %td= todo.task_id
       %td= todo.position
       %td= todo.try(:task).try(:task)

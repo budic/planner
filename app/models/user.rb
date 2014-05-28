@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :tasks
   
   has_many :schedule
-
+  has_many :time_blocks
   def set_default_role
     self.role ||= :user
   end
