@@ -16,6 +16,9 @@ gem 'haml-rails'
 gem 'pg'
 gem 'pundit'
 gem 'simple_form'
+gem 'ranked-model'
+gem 'jquery-ui-rails'
+gem 'jquery-rails'
 
 group :development do
   gem 'better_errors'

@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.sortable
+//= require jquery.ui.all
+//= require jquery.ui.touch-punch.min.js
+//= requre ./sort
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+

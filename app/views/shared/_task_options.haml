@@ -1,0 +1,5 @@
+%div.taskoptions
+  %div.readyoption
+    = link_to raw('<i class="glyphicon glyphicon-unchecked"></i> Ready'), task_set_ready_path( task ), :method => :get, :class => 'btn btn-link btn-sm', :remote => true
+  %div.completeoption
+    = link_to raw('<i class="glyphicon glyphicon-ok"></i> Completed'), task_set_complete_path( task ), :method => :get, :class => 'btn btn-link btn-sm', :remote => true

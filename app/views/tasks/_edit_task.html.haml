@@ -2,6 +2,7 @@
   = f.label :task
   = f.text_field :task
 
+  = @task.todo.position
   %button.btn.btn-success.btn-xs{type: "submit"}
     %i.glyphicon.glyphicon-save
     Update Task

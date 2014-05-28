@@ -40,10 +40,11 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
+  //background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
+  opacity: 0.9; //
   }
 section {
   @extend .row;
@@ -85,3 +86,15 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+.btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active .btn-link:visited {
+  color: black;
+  border-color: transparent;
+  text-decoration: none;
+}
+
+
+
+
+
+

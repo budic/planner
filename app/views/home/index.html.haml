@@ -1,5 +1,14 @@
-%h3 Home
-- if !current_user.nil? and current_user.admin?
-  - @users.each do |user|
-    %p
-      User: #{link_to user.email, user} Role: #{user.role unless user.role.nil?}
+%div.todaylist
+  %div.dateheader  
+    .dayofweek= @today.today.strftime("%A")
+    .fulldate= @today.today.strftime("%b #{@today.today.day.ordinalize}") + ', ' + @today.today.strftime("%Y")
+
+  %div.tasklist
+    %table.table.table-condensed#sortable{:data => {update_url: sort_todos_path}}
+      %tbody
+        - @todos.each do |todo|
+          %tr{:id => "task#{todo.task.id}", data: {item_id: "#{todo.id}"}, class: 'item'}         
+            = render :partial => "/shared/todo_listitem", locals: { todo: todo }
+  %div.newtask
+    = render :partial => 'new_task', locals: { sched: @today.id }
+

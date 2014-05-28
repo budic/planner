@@ -1,0 +1,12 @@
+%td.col-xs-1
+  %div.optiontoggle               
+  - if todo.try(:task).try(:state) == "complete"
+    %div.complete= link_to raw('<i class="glyphicon glyphicon-ok"></i>'), '#', onclick: "$('#todo_#{todo.id}').toggle(); return false", :class => 'btn btn-link btn-sm'
+  - else
+    %div.ready
+      = link_to raw('<i class="glyphicon glyphicon-unchecked"></i>'), '#', onclick: "$('#todo_#{todo.id}').toggle(); return false", data: { item: todo.id }, :class => 'btn btn-link btn-sm'
+  %div.toggle.todooption{:style => "display:none"}[todo]
+    %div.overlay#overlay             
+    %div.optionbox= render :partial => "/shared/task_options", locals: { task: todo.task }
+%td.col-xs-10.handle= todo.try(:task).try(:task)
+%td.col-xs-1= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_task_path(todo.task), :class => 'btn btn-link btn-xs'

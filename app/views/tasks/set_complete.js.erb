@@ -1,0 +1,7 @@
+$(".toggle").hide(100);
+$('#task<%= @task.id %>').html ("<%= escape_javascript render :partial => 'shared/todo_listitem', locals: { todo: @task.todo } %>");
+
+
+
+
+

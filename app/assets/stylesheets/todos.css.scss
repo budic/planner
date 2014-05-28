@@ -1,0 +1,32 @@
+// Place all the styles related to the Todos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.complete i {
+  color: green;
+  font-size: 16px;
+}
+
+.ready i {
+  color: black;
+  font-size: 16px;
+}
+
+.completeoption i {
+  color: green;
+  font-size: 16px;
+  padding-bottom: 5px;
+  text-decoration: none;
+}
+
+.readyoption i {
+  color: black;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+a.readyoption:visited {
+  color: black;
+  text-decoration: none; 
+}
